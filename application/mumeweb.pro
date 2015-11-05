@@ -8,8 +8,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    src/Calculator.cpp
+    MumeWeb.cpp
 
 HEADERS += \
-    src/Calculator.h
+    MumeWeb.hpp \
+    IMumeDbus.hpp
 

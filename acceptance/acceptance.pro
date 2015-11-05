@@ -1,22 +1,23 @@
 TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
-CONFIG -= qt
+
+QT += xml
 
 QMAKE_CXXFLAGS += --std=c++11
 
-INCLUDEPATH += ../application/src/
+INCLUDEPATH += ../application/
 
 LIBS += -lgtest -lcucumber-cpp -lboost_regex -lboost_system
 
 SOURCES += \
-    features/step_definitions/GTestCalculatorSteps.cpp \
-    ../application/src/Calculator.cpp
+    features/step_definitions/SwitchSteps.cpp \
+    ../application/MumeWeb.cpp
 
 DISTFILES += \
-    features/addition.feature \
-    features/division.feature \
-    features/step_definitions/cucumber.wire
+    features/step_definitions/cucumber.wire \
+    features/read_state_of_switch.feature
 
 HEADERS += \
-    ../application/src/Calculator.h
+    ../application/MumeWeb.hpp \
+    ../application/IMumeDbus.hpp

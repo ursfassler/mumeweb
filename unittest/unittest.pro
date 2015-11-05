@@ -1,18 +1,21 @@
 TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
-CONFIG -= qt
+
+QT += xml
 
 QMAKE_CXXFLAGS += --std=c++11
 
-INCLUDEPATH += ../application/src/
+INCLUDEPATH += ../application/
 
 LIBS += -lgtest -lgmock -lgtest_main
 
 SOURCES += \
-    ../application/src/Calculator.cpp \
-    Calculator_test.cpp
+    MumeWeb_test.cpp \
+    ../application/MumeWeb.cpp
 
 HEADERS += \
-    ../application/src/Calculator.h
+    ../application/MumeWeb.hpp \
+    ../application/IMumeDbus.hpp \
+    mocks/MumeDbus_Mock.hpp
 
