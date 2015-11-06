@@ -12,10 +12,13 @@ LIBS += -lgtest -lgmock -lgtest_main
 
 SOURCES += \
     MumeWeb_test.cpp \
-    ../application/MumeWeb.cpp
+    ../application/MumeWeb.cpp \
+    fcgi/fcgiSupport_test.cpp \
+    ../application/fcgi/fcgiSupport.cpp
 
 HEADERS += \
     ../application/MumeWeb.hpp \
     ../application/IMumeDbus.hpp \
-    mocks/MumeDbus_Mock.hpp
+    mocks/MumeDbus_Mock.hpp \
+    ../application/fcgi/fcgiSupport.hpp
 
