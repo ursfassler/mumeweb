@@ -3,14 +3,20 @@
 
 #include "IMumeDbus.hpp"
 
-#include <QIODevice>
+#include "http.hpp"
 
-class MumeWeb
+#include <QObject>
+
+class MumeWeb :
+    public QObject
 {
+    Q_OBJECT
+
   public:
     MumeWeb(const IMumeDbus &dbus);
 
-    void request(QIODevice &response);
+  public slots:
+    void request(HttpHeader header, HttpData data);
 
   private:
     const IMumeDbus &dbus;

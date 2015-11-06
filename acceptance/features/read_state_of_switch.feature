@@ -5,14 +5,14 @@ Feature: Read state of switch
   I want to read the state of the switch
   In order to show it to the user
 
-Scenario Outline: read state of switch
-  Given the switch is <switch state>
+Scenario: read state of switch
+  Given the switch is on
 
   When I request data
 
-  Then I expect an xml with a node <node> with an attribute <attribute>=<value>
+  Then I expect the http response:
+    """
+    Content-Type: text/xml
 
-Examples:
-  | switch state | node   | attribute | value |
-  |       on     | switch | state     |  "on" |
-  |      off     | switch | state     | "off" |
+    <mume><switch state="on"/></mume>
+    """

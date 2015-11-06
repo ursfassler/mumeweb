@@ -1,14 +1,26 @@
 #include "MumeWeb.hpp"
 
+#include <QTextStream>
+
 MumeWeb::MumeWeb(const IMumeDbus &aDbus) :
   dbus{aDbus}
 {
 }
 
-void MumeWeb::request(QIODevice &response)
+void MumeWeb::request(HttpHeader header, HttpData data)
 {
-  const QString state = dbus.switchState() ? "on" : "off";
-  const QString doc{"<mume><switch state=\"" + state + "\"/></mume>"};
-  response.write(doc.toStdString().c_str());
-}
+  data->open(QIODevice::ReadWrite);
+  QTextStream stream{data.data()};
 
+  stream << "Content-Type: text/xml" << HttpLineEnd;
+
+  stream << HttpLineEnd;
+
+  stream << "<mume>";
+  stream << "<switch state=\"";
+  stream << (dbus.switchState() ? "on" : "off");
+  stream << "\"/>";
+  stream << "</mume>";
+
+  data->close();
+}
