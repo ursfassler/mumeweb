@@ -16,6 +16,9 @@ QMAKE_CXXFLAGS += --std=c++11
 
 LIBS += -lfcgi
 
+target.path = /usr/bin
+INSTALLS += target
+
 dbusProxy.target = dbusProxy
 dbusProxy.commands = cd $$PWD/; \
     qdbusxml2cpp mumesrv.xml -p generated/MumeSrvProxy
