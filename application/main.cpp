@@ -15,8 +15,8 @@ class MumeDbus final :
     public IMumeDbus
 {
   public:
-    MumeDbus(QObject *parent) :
-      mumeSrv{"ch.bitzgi.MumeSrv", "/ch/bitzgi/mumesrv", QDBusConnection::sessionBus(), parent}
+    MumeDbus(QDBusConnection bus, QObject *parent) :
+      mumeSrv{"ch.bitzgi.MumeSrv", "/ch/bitzgi/mumesrv", bus, parent}
     {
     }
 
@@ -30,6 +30,16 @@ class MumeDbus final :
 
 };
 
+static bool isSessionBus(QStringList arg)
+{
+  QCommandLineParser parser;
+  QCommandLineOption sessionDbusOption("session-dbus");
+  parser.addOption(sessionDbusOption);
+
+  parser.parse(arg);
+
+  return parser.isSet(sessionDbusOption);
+}
 
 int main(int argc, char *argv[])
 {
@@ -37,7 +47,10 @@ int main(int argc, char *argv[])
 
   QCoreApplication a{argc, argv};
 
-  MumeDbus mumeSrv{&a};
+  const auto session = isSessionBus(a.arguments());
+  auto bus = session ? QDBusConnection::sessionBus() : QDBusConnection::systemBus();
+
+  MumeDbus mumeSrv{bus, &a};
   MumeWeb mumeweb{mumeSrv};
 
   FcgiServer server{&a};
