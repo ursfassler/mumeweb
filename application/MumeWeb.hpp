@@ -9,6 +9,7 @@
 #include "http.hpp"
 
 #include <QObject>
+#include <QDomDocument>
 
 class MumeWeb :
     public QObject
@@ -16,13 +17,17 @@ class MumeWeb :
     Q_OBJECT
 
   public:
-    MumeWeb(const IMumeDbus &dbus);
+    MumeWeb(IMumeDbus &dbus);
 
   public slots:
     void request(HttpHeader header, HttpData data);
 
   private:
-    const IMumeDbus &dbus;
+    IMumeDbus &dbus;
+
+    void writeResponse(HttpHeader header, HttpData data);
+    void readRequest(HttpHeader header, HttpData data);
+    void parseRequest(const QDomElement request);
 };
 
 #endif // MUMEWEB_HPP

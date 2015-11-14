@@ -99,7 +99,7 @@ TEST_F(MumeWeb_Test, request_returns_a_content_type_in_http_header)
 
   const auto header = getHeader();
   ASSERT_EQ(1, header.size());
-  ASSERT_EQ("Content-Type: text/xml", header[0].toStdString());
+  ASSERT_EQ("Content-Type: application/xml", header[0].toStdString());
 }
 
 TEST_F(MumeWeb_Test, request_writes_switch_state_to_response_for_on)
@@ -122,6 +122,16 @@ TEST_F(MumeWeb_Test, request_writes_switch_state_to_response_for_off)
   QDomDocument doc;
   ASSERT_TRUE(doc.setContent(getBody()));
   ASSERT_TRUE(hasElement(doc.documentElement(), "switch", "state", "off"));
+}
+
+TEST_F(MumeWeb_Test, request_sets_openPosition)
+{
+  header["Content-Type"] = "application/xml";
+  storage = "<mume><openPosition value=\"0.1234\"/></mume>";
+
+  EXPECT_CALL(mumeDbus, setOpenPosition(0.1234)).Times(1);
+
+  testee.request(header, data);
 }
 
 }

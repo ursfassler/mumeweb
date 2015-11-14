@@ -10,6 +10,9 @@ class IMumeDbus
     virtual ~IMumeDbus() = default;
 
     virtual bool switchState() const = 0;
+
+    virtual void setOpenPosition(double value) = 0;
+
 };
 
 #endif // IMUMEDBUS

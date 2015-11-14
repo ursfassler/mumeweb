@@ -14,11 +14,19 @@ class DbusDummy :
     public IMumeDbus
 {
   public:
-    bool switchOn;
-    bool switchState() const
+    bool switchOn{false};
+    bool switchState() const override
     {
       return switchOn;
     }
+
+    double openPosition{0};
+    void setOpenPosition(double value) override
+    {
+      openPosition = value;
+    }
+
+
 };
 
 class Context

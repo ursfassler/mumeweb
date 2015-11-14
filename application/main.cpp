@@ -25,6 +25,11 @@ class MumeDbus final :
       return mumeSrv.switchOn();
     }
 
+    void setOpenPosition(double value) override
+    {
+      mumeSrv.setOpenPosition(value);
+    }
+
   private:
     ChBitzgiMumeSrvInterface mumeSrv;
 

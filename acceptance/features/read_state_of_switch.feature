@@ -15,7 +15,7 @@ Scenario: read state of switch
 
   Then I expect the http response:
     """
-    Content-Type: text/xml
+    Content-Type: application/xml
 
     <mume><switch state="on"/></mume>
     """

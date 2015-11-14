@@ -16,6 +16,22 @@ namespace
     context->mumeWeb.request(context->header, context->data);
   }
 
+  WHEN("^I set the http request header \"Content-Type\" to \"application/xml\"$")
+  {
+    cucumber::ScenarioScope<Context> context;
+
+    context->header["Content-Type"] = "application/xml";
+  }
+
+  WHEN("^I set the http request content to:$")
+  {
+    cucumber::ScenarioScope<Context> context;
+
+    REGEX_PARAM(std::string, content);
+
+    context->xmlData.append(QByteArray::fromStdString(content));
+  }
+
   static QString normalize(QString text)
   {
     return text.replace("\r\n", "\n");

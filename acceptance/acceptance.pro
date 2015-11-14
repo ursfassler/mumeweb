@@ -18,11 +18,13 @@ SOURCES += \
     features/step_definitions/SwitchSteps.cpp \
     ../application/MumeWeb.cpp \
     features/step_definitions/HttpSteps.cpp \
-    features/step_definitions/SupportSteps.cpp
+    features/step_definitions/SupportSteps.cpp \
+    features/step_definitions/DbusSteps.cpp
 
 DISTFILES += \
     features/step_definitions/cucumber.wire \
-    features/read_state_of_switch.feature
+    features/read_state_of_switch.feature \
+    features/write_servo_position.feature
 
 HEADERS += \
     ../application/MumeWeb.hpp \
