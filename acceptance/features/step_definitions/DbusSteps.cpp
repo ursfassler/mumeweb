@@ -9,13 +9,13 @@
 namespace
 {
 
-  THEN("^I expect a D-Bus request setOpenPosition with the value ((\\d+)(\\.(\\d+))?)$")
+  THEN("^I expect a D-Bus request setOpenPositionMs with the value ((\\d+)(\\.(\\d+))?)$")
   {
     cucumber::ScenarioScope<Context> context;
 
     REGEX_PARAM(double, value);
 
-    ASSERT_DOUBLE_EQ(value, context->dbus.openPosition);
+    ASSERT_DOUBLE_EQ(value, context->dbus.openPositionMs);
   }
 
 }

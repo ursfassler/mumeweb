@@ -40,11 +40,11 @@ public:
     { return qvariant_cast< bool >(property("switchOn")); }
 
 public Q_SLOTS: // METHODS
-    inline QDBusPendingReply<> setOpenPosition(double value)
+    inline QDBusPendingReply<> setOpenPositionMs(double value)
     {
         QList<QVariant> argumentList;
         argumentList << QVariant::fromValue(value);
-        return asyncCallWithArgumentList(QStringLiteral("setOpenPosition"), argumentList);
+        return asyncCallWithArgumentList(QStringLiteral("setOpenPositionMs"), argumentList);
     }
 
 Q_SIGNALS: // SIGNALS

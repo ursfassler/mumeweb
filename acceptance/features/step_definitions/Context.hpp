@@ -20,10 +20,10 @@ class DbusDummy :
       return switchOn;
     }
 
-    double openPosition{0};
-    void setOpenPosition(double value) override
+    double openPositionMs{0};
+    void setOpenPositionMs(double value) override
     {
-      openPosition = value;
+      openPositionMs = value;
     }
 
 

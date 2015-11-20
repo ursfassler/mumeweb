@@ -12,11 +12,11 @@ Scenario Outline: write open position of the servo
   When I set the http request header "Content-Type" to "application/xml"
   And I set the http request content to:
     """
-      <mume><openPosition value="<value>"/></mume>
+      <mume><openPositionMs value="<value>"/></mume>
     """
   And I request data
 
-  Then I expect a D-Bus request setOpenPosition with the value <value>
+  Then I expect a D-Bus request setOpenPositionMs with the value <value>
 
   Examples:
     | value |

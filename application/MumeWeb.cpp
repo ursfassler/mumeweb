@@ -31,13 +31,13 @@ void MumeWeb::readRequest(HttpHeader, HttpData data)
 void MumeWeb::parseRequest(const QDomElement request)
 {
   for (auto node = request.firstChildElement(); !node.isNull(); node = node.nextSiblingElement()) {
-    if (node.nodeName() == "openPosition") {
+    if (node.nodeName() == "openPositionMs") {
       const auto valueAttr = node.attributeNode("value");
       if (!valueAttr.isNull()) {
         bool ok = false;
         double value = valueAttr.value().toDouble(&ok);
         if (ok) {
-          dbus.setOpenPosition(value);
+          dbus.setOpenPositionMs(value);
         }
       }
     }

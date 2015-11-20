@@ -11,7 +11,7 @@ class IMumeDbus
 
     virtual bool switchState() const = 0;
 
-    virtual void setOpenPosition(double value) = 0;
+    virtual void setOpenPositionMs(double value) = 0;
 
 };
 

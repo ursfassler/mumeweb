@@ -127,9 +127,9 @@ TEST_F(MumeWeb_Test, request_writes_switch_state_to_response_for_off)
 TEST_F(MumeWeb_Test, request_sets_openPosition)
 {
   header["Content-Type"] = "application/xml";
-  storage = "<mume><openPosition value=\"0.1234\"/></mume>";
+  storage = "<mume><openPositionMs value=\"0.1234\"/></mume>";
 
-  EXPECT_CALL(mumeDbus, setOpenPosition(0.1234)).Times(1);
+  EXPECT_CALL(mumeDbus, setOpenPositionMs(0.1234)).Times(1);
 
   testee.request(header, data);
 }
