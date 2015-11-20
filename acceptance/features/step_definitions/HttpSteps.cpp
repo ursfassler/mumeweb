@@ -37,21 +37,16 @@ namespace
     return text.replace("\r\n", "\n");
   }
 
-  static std::string normalize(const std::string &text)
+  THEN("^I expect the following line in the http response:$")
   {
-    return normalize(QString::fromStdString(text)).toStdString();
-  }
-
-  THEN("^I expect the http response:$")
-  {
-    REGEX_PARAM(std::string, httpResponse);
+    REGEX_PARAM(std::string, line);
 
     cucumber::ScenarioScope<Context> context;
 
-    const auto expected = normalize(httpResponse);
-    const auto received = normalize(context->xmlData).toStdString();
+    const auto expected = normalize(QString::fromStdString(line));
+    const auto received = normalize(context->xmlData);
 
-    ASSERT_EQ(expected, received);
+    ASSERT_TRUE(received.contains(expected));
   }
 
 }
