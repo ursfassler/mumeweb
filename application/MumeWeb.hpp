@@ -10,6 +10,7 @@
 
 #include <QObject>
 #include <QDomDocument>
+#include <functional>
 
 class MumeWeb :
     public QObject
@@ -28,6 +29,7 @@ class MumeWeb :
     void writeResponse(HttpHeader header, HttpData data);
     void readRequest(HttpHeader header, HttpData data);
     void parseRequest(const QDomElement request);
+    void writeDouble(QDomElement element, std::function<void(IMumeDbus&, double)> writer);
 };
 
 #endif // MUMEWEB_HPP

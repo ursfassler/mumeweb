@@ -7,20 +7,8 @@
     <method name="setOpenPositionMs">
       <arg name="value" type="d" direction="in"/>
     </method>
-<!--    <method name="Frobate">
-      <arg name="foo" type="i" direction="in"/>
-      <arg name="bar" type="s" direction="out"/>
-      <arg name="baz" type="a{us}" direction="out"/>
-      <annotation name="org.freedesktop.DBus.Deprecated" value="true"/>
+    <method name="setClosePositionMs">
+      <arg name="value" type="d" direction="in"/>
     </method>
-    <method name="Bazify">
-      <arg name="bar" type="(iiu)" direction="in"/>
-      <arg name="bar" type="v" direction="out"/>
-    </method> -->
-<!--    <signal name="Changed">
-      <arg name="new_value" type="b"/>
-    </signal>-->
   </interface>
-<!--  <node name="child_of_sample_object"/>
-  <node name="another_child_of_sample_object"/>-->
 </node>

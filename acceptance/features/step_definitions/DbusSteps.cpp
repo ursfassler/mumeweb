@@ -18,5 +18,13 @@ namespace
     ASSERT_DOUBLE_EQ(value, context->dbus.openPositionMs);
   }
 
+  THEN("^I expect a D-Bus request setClosePositionMs with the value ((\\d+)(\\.(\\d+))?)$")
+  {
+    cucumber::ScenarioScope<Context> context;
+
+    REGEX_PARAM(double, value);
+
+    ASSERT_DOUBLE_EQ(value, context->dbus.closePositionMs);
+  }
 }
 

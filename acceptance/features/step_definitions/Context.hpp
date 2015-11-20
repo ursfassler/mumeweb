@@ -32,6 +32,12 @@ class DbusDummy :
       openPositionMs = value;
     }
 
+    double closePositionMs{0};
+    void setClosePositionMs(double value) override
+    {
+      closePositionMs = value;
+    }
+
 
 };
 

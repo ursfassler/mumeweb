@@ -28,18 +28,26 @@ void MumeWeb::readRequest(HttpHeader, HttpData data)
   data->close();
 }
 
+void MumeWeb::writeDouble(QDomElement element, std::function<void(IMumeDbus&, double)> writer)
+{
+  const auto valueAttr = element.attributeNode("value");
+  if (!valueAttr.isNull()) {
+    bool ok = false;
+    double value = valueAttr.value().toDouble(&ok);
+    if (ok) {
+      writer(dbus, value);
+    }
+  }
+}
+
 void MumeWeb::parseRequest(const QDomElement request)
 {
   for (auto node = request.firstChildElement(); !node.isNull(); node = node.nextSiblingElement()) {
     if (node.nodeName() == "openPositionMs") {
-      const auto valueAttr = node.attributeNode("value");
-      if (!valueAttr.isNull()) {
-        bool ok = false;
-        double value = valueAttr.value().toDouble(&ok);
-        if (ok) {
-          dbus.setOpenPositionMs(value);
-        }
-      }
+      writeDouble(node, &IMumeDbus::setOpenPositionMs);
+    }
+    if (node.nodeName() == "closePositionMs") {
+      writeDouble(node, &IMumeDbus::setClosePositionMs);
     }
   }
 }

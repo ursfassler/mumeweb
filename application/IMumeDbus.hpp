@@ -15,6 +15,7 @@ class IMumeDbus
     virtual uint32_t count() const = 0;
 
     virtual void setOpenPositionMs(double value) = 0;
+    virtual void setClosePositionMs(double value) = 0;
 
 };
 

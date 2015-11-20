@@ -145,5 +145,26 @@ TEST_F(MumeWeb_Test, request_sets_openPosition)
   testee.request(header, data);
 }
 
+TEST_F(MumeWeb_Test, request_sets_closePosition)
+{
+  header["Content-Type"] = "application/xml";
+  storage = "<mume><closePositionMs value=\"0.1234\"/></mume>";
+
+  EXPECT_CALL(mumeDbus, setClosePositionMs(0.1234)).Times(1);
+
+  testee.request(header, data);
+}
+
+TEST_F(MumeWeb_Test, request_sets_openPosition_and_closePosition)
+{
+  header["Content-Type"] = "application/xml";
+  storage = "<mume><openPositionMs value=\"0.12\"/><closePositionMs value=\"0.34\"/></mume>";
+
+  EXPECT_CALL(mumeDbus, setOpenPositionMs(0.12)).Times(1);
+  EXPECT_CALL(mumeDbus, setClosePositionMs(0.34)).Times(1);
+
+  testee.request(header, data);
+}
+
 }
 
