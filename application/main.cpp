@@ -25,6 +25,11 @@ class MumeDbus final :
       return mumeSrv.switchOn();
     }
 
+    uint32_t count() const override
+    {
+      return mumeSrv.count();
+    }
+
     void setOpenPositionMs(double value) override
     {
       mumeSrv.setOpenPositionMs(value);

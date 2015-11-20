@@ -20,6 +20,12 @@ class DbusDummy :
       return switchOn;
     }
 
+    uint32_t countValue{0};
+    uint32_t count() const override
+    {
+      return countValue;
+    }
+
     double openPositionMs{0};
     void setOpenPositionMs(double value) override
     {

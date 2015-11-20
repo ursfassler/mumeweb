@@ -35,6 +35,10 @@ public:
 
     ~ChBitzgiMumeSrvInterface();
 
+    Q_PROPERTY(uint count READ count)
+    inline uint count() const
+    { return qvariant_cast< uint >(property("count")); }
+
     Q_PROPERTY(bool switchOn READ switchOn)
     inline bool switchOn() const
     { return qvariant_cast< bool >(property("switchOn")); }

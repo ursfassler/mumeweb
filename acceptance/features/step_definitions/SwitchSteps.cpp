@@ -24,4 +24,11 @@ namespace
     context->dbus.switchOn = parseOn(onText);
   }
 
+  GIVEN("^the switch count is (\\d+)$")
+  {
+    REGEX_PARAM(uint32_t, count);
+
+    cucumber::ScenarioScope<Context> context;
+    context->dbus.countValue = count;
+  }
 }

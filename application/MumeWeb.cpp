@@ -54,9 +54,10 @@ void MumeWeb::writeResponse(HttpHeader, HttpData data)
   stream << HttpLineEnd;
 
   stream << "<mume>";
-  stream << "<switch state=\"";
-  stream << (dbus.switchState() ? "on" : "off");
-  stream << "\"/>";
+  stream << "<switch ";
+  stream << "state=\"" << (dbus.switchState() ? "on" : "off") << "\" ";
+  stream << "count=\"" << dbus.count() << "\"";
+  stream << "/>";
   stream << "</mume>";
 
   data->close();

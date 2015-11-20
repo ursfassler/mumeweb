@@ -4,12 +4,15 @@
 #ifndef IMUMEDBUS
 #define IMUMEDBUS
 
+#include <cstdint>
+
 class IMumeDbus
 {
   public:
     virtual ~IMumeDbus() = default;
 
     virtual bool switchState() const = 0;
+    virtual uint32_t count() const = 0;
 
     virtual void setOpenPositionMs(double value) = 0;
 

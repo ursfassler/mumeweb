@@ -11,6 +11,7 @@ class MumeDbusMock : public IMumeDbus
 {
   public:
     MOCK_CONST_METHOD0(switchState, bool());
+    MOCK_CONST_METHOD0(count, uint32_t());
     MOCK_METHOD1(setOpenPositionMs, void(double value));
 };
 

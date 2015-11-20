@@ -124,6 +124,17 @@ TEST_F(MumeWeb_Test, request_writes_switch_state_to_response_for_off)
   ASSERT_TRUE(hasElement(doc.documentElement(), "switch", "state", "off"));
 }
 
+TEST_F(MumeWeb_Test, request_writes_count_for_0)
+{
+  ON_CALL(mumeDbus, count()).WillByDefault(::testing::Return(0));
+
+  testee.request(header, data);
+
+  QDomDocument doc;
+  ASSERT_TRUE(doc.setContent(getBody()));
+  ASSERT_TRUE(hasElement(doc.documentElement(), "switch", "count", "0"));
+}
+
 TEST_F(MumeWeb_Test, request_sets_openPosition)
 {
   header["Content-Type"] = "application/xml";
